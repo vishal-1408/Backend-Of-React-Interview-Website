@@ -28,11 +28,14 @@ const participantsSchema = new mongoose.Schema({
 
 
 //single function to check the clashing of interview timings
-participantsSchema.methods.checkClash = function (start,end){
+participantsSchema.methods.checkClash = function (start,end,id=null){
    const interviews=this.scheduledInterviews;
    for(let i=0;i<=interviews.length-1;i++){
        if(!(start>interviews.endTime || end<interviews.startTime)){
-           throw new Error("Participant is busy at that time")
+           console.log(interviews[i]._id.toString(),id.toString(),interviews[i]._id.toString()!=id.toString())
+           if(interviews[i]._id.toString()!=id.toString()) {
+            throw new Error("Participant is busy!")
+           }
        }
    }
 }

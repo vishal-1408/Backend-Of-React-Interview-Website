@@ -15,4 +15,4 @@ router.patch("/interview/:id",controllers.updateInterview);
 
 
 
-module.export = router;
+module.exports = router;

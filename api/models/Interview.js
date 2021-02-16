@@ -10,9 +10,8 @@ const interviewSchema = new mongoose.Schema({
         required:'end time required'
     },
     participants:[{
-        type:Schema.Types.ObjectId,
-        ref:"Participants",
-        required:true
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"Participants"
     }]
 },{
     timestamps:true
