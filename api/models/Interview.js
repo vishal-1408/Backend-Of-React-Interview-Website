@@ -2,11 +2,11 @@ const mongoose = require("mongoose");
 
 const interviewSchema = new mongoose.Schema({
     startTime:{
-        type:Number,
+        type:Date,
         required:'start time required'
     },
     endTime:{
-        type:Number,
+        type:Date,
         required:'end time required'
     },
     participants:[{

@@ -31,9 +31,8 @@ const participantsSchema = new mongoose.Schema({
 participantsSchema.methods.checkClash = function (start,end,id=null){
    const interviews=this.scheduledInterviews;
    for(let i=0;i<=interviews.length-1;i++){
-       if(!(start>interviews.endTime || end<interviews.startTime)){
-           console.log(interviews[i]._id.toString(),id.toString(),interviews[i]._id.toString()!=id.toString())
-           if(interviews[i]._id.toString()!=id.toString()) {
+       if(!(start.getTime()>interviews[i].endTime.getTime()) && !(end.getTime()<interviews[i].startTime.getTime())){
+           if(!id || (id!=null && interviews[i]._id.toString()!=id.toString())) {
             throw new Error("Participant is busy!")
            }
        }
