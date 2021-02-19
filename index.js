@@ -7,7 +7,8 @@ const bodyParser = require("body-parser");
 const dotenv = require("dotenv");
 const Participants = require("./api/models/Participants");
 const app = express();
-const indexRoutes = require("./api/routes/Index");
+const interviewRoutes = require("./api/routes/interview");
+const participantsRoutes = require("./api/routes/participants")
 dotenv.config();
 
 mongoose.connect(process.env.DBURL, {useNewUrlParser: true, useUnifiedTopology: true})
@@ -56,7 +57,8 @@ app.use((req, res, next) => {
     next();
   });
 
-app.use(indexRoutes);
+app.use(interviewRoutes);
+app.use(participantsRoutes);
 
 const PORT = process.env.PORT || 4001
 app.listen(PORT,()=>{
